@@ -1,0 +1,12 @@
+*in utop to include a module:
+#require "core";;
+open Core;;
+
+*compile with packages
+ocamlfind ocamlc -package batteries -linkpkg pb5.ml -o pb5
+
+*to call a ml file in utop use:
+#use "pb5.ml"
+
+
+
