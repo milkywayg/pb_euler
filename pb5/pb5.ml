@@ -1,6 +1,7 @@
+(* #require "batteries" *)
 open Batteries
 
-let primes=[2;3;5;7;11;13;17;19]
+let primes=[2;3;5;7;11;13;17;19;23;29;31;37;41;43;47]
 
 let rec print_list = function
 [] -> ()
@@ -64,21 +65,21 @@ let rec prod_l lst =
     | h::tl -> h*prod_l tl
     | [] -> 1
 
-(* this function is wrong *)
-let rec lcm_l lst =
-    (prod_l lst)/Int.pow (gcd_l lst) (List.length lst-1)
-(*     if List.length lst = 2 then  *)
-(*     match lst with *)
-(*     |a::b::[] -> (a*b)/(gcd a b) *)
-(*     |_  -> 1 *)
-(* else  *)
-(*     match lst with *)
-(*     |h::t -> prod_l gcd h (gcd_l t) *)
-(*     |_ -> 1 *)
-(*  *)
+
+let lcm a b = 
+    abs (a*b/(gcd a b))
 
 
+(* lets use the fact that lcm is associative *)
+let rec lcm_l lst = 
+    match lst with
+    |[] -> 1
+    | h::tl -> lcm h (lcm_l tl)
 
+let result = (lcm_l lst_0_20)
+
+let () =
+    print_int result
 
 
 
