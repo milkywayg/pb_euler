@@ -1,0 +1,3 @@
+compile:
+ ocamlfind ocamlc -package batteries -linkpkg pb6.ml -o pb6
+
