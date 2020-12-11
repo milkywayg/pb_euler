@@ -1,5 +1,5 @@
 (* is m divisible by one of the list elements *)
-let rec div_by_list m lst = 
+let rec div_by_list m lst =
     (* let max_calc = sqrt(float_of_int(m)) in *)
     (* match List.rev lst with *)
     match  lst with
@@ -7,6 +7,17 @@ let rec div_by_list m lst =
     |h::tl -> if (m mod h=0)  then true
     (* else if (h > (int_of_float(max_calc))+1) then false *)
     else div_by_list m tl;;
+
+
+(* (* this is not efficient probably due to list reverse *) *)
+(* let rec div_by_list m lst =  *)
+(*     let max_calc = sqrt(float_of_int(m)) in *)
+(*     (* print_float max_calc; print_char ' '; *) *)
+(*     match List.rev lst with *)
+(*     |[] ->  false *)
+(*     |h::tl -> if (m mod h=0)  then true *)
+(*     else if (Float.compare (float_of_int(h))  max_calc) = 1 then false *)
+(*     else div_by_list m (List.rev tl);; *)
 
 
 let last_elm_in_list lst = 
