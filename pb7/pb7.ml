@@ -31,9 +31,9 @@ let find_nth_prime n_max=
         if ((List.length lst_pr)=n_pr) then last_in_lst_pr
         else 
             if not ((div_by_list n_fr lst_pr)) then  (*nxt element after the list is not divided by the list *)
-                aux n_pr (n_fr+1)  (n_fr::lst_pr)
+                aux n_pr (n_fr+2)  (n_fr::lst_pr)
             else 
-                aux n_pr (n_fr+1) lst_pr in
+                aux n_pr (n_fr+2) lst_pr in
     aux n_max 3 [2];;
 
 let result = find_nth_prime 10001;;
