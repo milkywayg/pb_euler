@@ -1,8 +1,11 @@
 (* is m divisible by one of the list elements *)
 let rec div_by_list m lst = 
-    match lst with
+    (* let max_calc = sqrt(float_of_int(m)) in *)
+    (* match List.rev lst with *)
+    match  lst with
     |[] ->  false
-    |h::tl -> if m mod h=0 then true
+    |h::tl -> if (m mod h=0)  then true
+    (* else if (h > (int_of_float(max_calc))+1) then false *)
     else div_by_list m tl;;
 
 
