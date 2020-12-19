@@ -55,20 +55,65 @@ let find_nth_prime n_max=
 (* let ()= print_int result *)
 (*  *)
 
-let sum_prime_till p_max=
-    let psum= ref 0 in 
-    let idx = ref 0 in
-    let cur_prime = ref 0 in 
-    while (!cur_prime <= p_max) do
-        idx  := !idx+1;
-        (* print_int !cur_prime; *)
-        psum := !psum + !cur_prime;
-        cur_prime := find_nth_prime !idx; 
-        (* print_int !psum; *)
-    done; let res = !psum in res
-(* let res = !psum in res *)
+(* let sum_prime_till p_max= *)
+    (* let psum= ref 0 in  *)
+    (* let idx = ref 0 in *)
+    (* let cur_prime = ref 0 in  *)
+    (* while (!cur_prime <= p_max) do *)
+    (*     idx  := !idx+1; *)
+    (*     (* print_int !cur_prime; *) *)
+    (*     psum := !psum + !cur_prime; *)
+    (*     cur_prime := find_nth_prime !idx;  *)
+    (*     (* print_int !psum; *) *)
+    (* done ; !psum *)
+    (* (* done; let res = !psum in res *) *)
+(* [> let res = !psum in res <] *)
 
 
-sum_prime_till 2000000;;
+
+
+(* let sum_prime_till2 p_max =  *)
+(*     let rec build_p_list n_max p_list p_sum= *)
+(*         if n_max=2 then 2::[], 2  *)
+(*         else if (n_max mod 2 =0) then build_p_list (n_max-1) p_list p_sum *)
+(*         else (*n_max odd *) *)
+(*             if not div_by_list n_max p_list then  *)
+(*             let tmp_list, tmp_p_sum = build_p_list (n_max-1) p_list p_sum  in *)
+(*             n_max::tmp_list, (tmp_p_sum+n_max) *)
+
+
+
+let sum_prime_till2 p_max = 
+    let rec build_p_list n_num p_list p_sum=
+        if (n_num <p_max) then 
+            if (n_num mod 2 =0) then build_p_list (n_num+1) p_list p_sum
+            else (*n_num odd *)
+                if not (div_by_list n_num p_list) then 
+                    let tmp_list, tmp_p_sum = build_p_list (n_num+2) (n_num::p_list) (n_num+p_sum) in 
+                    tmp_list, tmp_p_sum
+                else build_p_list (n_num+1) p_list p_sum
+        else p_list, p_sum in
+    build_p_list 3 [2] 2;;
+
+
+let ()= 
+    let tmp_l, ps=(sum_prime_till2 2000000) in
+    print_int ps;;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
